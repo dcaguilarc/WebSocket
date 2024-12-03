@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Hola Mundo</title>
+</head>
+<body>
+  <h1>WebSocket Hola Mundo</h1>
+  <script>
+    // Crear una conexión WebSocket con el servidor
+    const socket = new WebSocket('ws://localhost:8080');
+
+    // Manejar la apertura de la conexión
+    socket.addEventListener('open', () => {
+      console.log('Conexión establecida con el servidor');
+      socket.send('¡Hola, servidor!');
+    });
+
+    // Manejar mensajes recibidos del servidor
+    socket.addEventListener('message', (event) => {
+      console.log('Mensaje del servidor:', event.data);
+    });
+
+    // Manejar el cierre de la conexión
+    socket.addEventListener('close', () => {
+      console.log('Conexión cerrada');
+    });
+  </script>
+</body>
+</html>
